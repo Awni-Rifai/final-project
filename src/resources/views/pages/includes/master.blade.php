@@ -1,0 +1,5 @@
+@include('pages/includes/head')
+@include('pages/includes/header')
+@yield('content')
+@include('pages/includes/footer')
+@include('pages/includes/scripts')
