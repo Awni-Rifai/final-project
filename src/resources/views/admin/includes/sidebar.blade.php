@@ -8,24 +8,11 @@
     <div class="menu-sidebar__content js-scrollbar1">
         <nav class="navbar-sidebar">
             <ul class="list-unstyled navbar__list">
-                <li class="has-sub">
-                    <a class="js-arrow" href="#">
-                        <i class="fas fa-tachometer-alt"></i>Dashboard</a>
-                    <ul class="list-unstyled navbar__sub-list js-sub-list">
-                        <li>
-                            <a href="users/index.blade.php">Dashboard 1</a>
-                        </li>
-                        <li>
-                            <a href="index2.html">Dashboard 2</a>
-                        </li>
-                        <li>
-                            <a href="index3.html">Dashboard 3</a>
-                        </li>
-                        <li>
-                            <a href="index4.html">Dashboard 4</a>
-                        </li>
-                    </ul>
-                </li>
+                <li class="">
+
+                    <a href="{{route('admin.')}}"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+
+
                 <li>
                     @if(Illuminate\Support\Facades\Auth::user()->role_id===3)
                     <a href="{{route('admin.users.index')}}">

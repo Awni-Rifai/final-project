@@ -6,6 +6,9 @@ use App\Models\Category;
 use App\Models\Exam;
 use App\Http\Requests\StoreExamRequest;
 use App\Http\Requests\UpdateExamRequest;
+use App\Models\Question;
+use App\Models\Result;
+use App\Models\Score;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
@@ -13,14 +16,16 @@ use Intervention\Image\Facades\Image;
 
 class ExamController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
+
+        $exams=Exam::paginate(10);
 
         return view('admin.exams.index', [
 
             'categories'     =>  Category::all(),
 
-            'exams'          =>  Exam::all(),
+            'exams'          =>  $exams,
 
             'auth_user'      =>  Auth::user(),
         ]);
@@ -191,12 +196,28 @@ class ExamController extends Controller
      */
     public function destroy($id)
     {
+        //check if the exam has some questions
+        $question=Question::where('exam_id','=',$id)->first();
+        if($question){
+            return redirect()->route('admin.exams.index',['error'=>'have-questions','id'=>$id]);
+        }
         $exam = Exam::find($id);
-
-        //check if the category is already deleted
-        if($exam)$exam -> delete();
+        $exam -> delete();
 
         return redirect()->route('admin.exams.index');
+    }
+    public function destroyCascade(Request $request){
+
+        $questions=Question::where('exam_id','=',$request->id);
+        $results=Result::whereIn('question_id',$questions->pluck('id')->toArray());
+        $scores=Score::where('exam_id','=',$request->id);
+        $results->delete();
+        $scores->delete();
+        $questions->delete();
+
+        $exam=Exam::find($request->id)->delete();
+        return redirect()->route('admin.exams.index',['deleted'=>'true']);
+
     }
     public function showAllExams(){
         return view('pages.Exams',[

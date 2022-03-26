@@ -39,6 +39,8 @@ Route::prefix('admin')->name('admin.')->middleware('admin.auth')->group(function
         ]);
     });
     Route::resource('users'       , UserController::class)->middleware('super_admin.auth');
+    Route::post('exams/destroyCascade', [ExamController::class,'destroyCascade'])->name('exam.destroyCascade');
+    Route::post('categories/destroyCascade', [CategoryController::class,'destroyCascade'])->name('category.destroyCascade');
     Route::resource('categories'  , CategoryController::class);
     Route::resource('exams'       , ExamController::class);
     Route::resource('questions'   , QuestionController::class);
@@ -57,3 +59,4 @@ Route::get('/exam/{id}',[ExamController::class,'show'])->name('exam-single')->mi
 Route::get('/Exams',[ExamController::class,'showAllExams'])->name('Exams')->middleware('auth');
 Route::get('/profile',[ScoreController::class,'showAllUserScores'])->name('profile')->middleware('auth');
 Route::post('/api/',[ResultController::class,'set_results']);
+

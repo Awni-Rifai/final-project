@@ -6,6 +6,19 @@
     <div class="main-content">
         <div class="section__content section__content--p30">
             <div class="container-fluid">
+                <form class="form-header search_form" action={{route('admin.results.index')}} method="GET">
+                    <select class="mx-2 filter-search" name="type" id="">
+                        <option value="user">user</option>
+                        <option value="exam_title">exam_title</option>
+                    </select>
+                    <input class="au-input au-input--xl search_input" type="text" name="search" placeholder="Search for a user" />
+                    <button class="au-btn--submit" type="button">
+                        <i class="zmdi zmdi-search"></i>
+                    </button>
+                    <span class="text-danger error-span"></span>
+                </form>
+                <span class="text-danger mx-4 h6">{{$error}}</span>
+
 
                 <div class="row m-t-30">
                     <div class="col-md-12">
@@ -51,6 +64,11 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex mt-5 justify-content-center">
+                                {!! $results->links() !!}
+                            </div>
+                            <h1></h1>
+                        </div>
                         </div>
                         <!-- END DATA TABLE-->
                     </div>

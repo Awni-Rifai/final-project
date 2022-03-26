@@ -8,11 +8,28 @@
             <div class="container-fluid">
                 <div class="col-lg-12">
                     <div class="card">
-                        <div class="card-header">Add Exam</div>
+                        <div class="card-header mb-3">Add Exam</div>
+                        @if(request()->get('error'))
+
+                            <div class="alert-danger text-center delete-alert h5 w-50 d-block m-auto shadow card p-4 ">
+                                The Exam you are trying to delete have some questions do you want to delete the questions also
+                                <form action="{{route('admin.exam.destroyCascade')}}"  class="p-3" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{request()->get('id')}}">
+                                    <a href="{{route('admin.exams.index')}}" class="btn btn-outline-success">NO</a>
+                                    <button class="btn btn-outline-danger">YES</button>
+
+                                </form>
+
+
+
+
+                            </div>
+                        @endif
                         <div class="card-body card-block">
                             <form action="{{route('admin.exams.store')}}" method="post" class="" enctype="multipart/form-data">
-                                @csrf
-                                <!-- name input-->
+                            @csrf
+                            <!-- name input-->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
@@ -25,7 +42,7 @@
                                     <div class="text-danger d-block px-2">{{$message}}</div>
                                     @enderror
                                 </div>
-                                    <!-- max_score input-->
+                                <!-- max_score input-->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
@@ -39,7 +56,7 @@
                                     <div class="text-danger d-block px-2">{{$message}}</div>
                                     @enderror
                                 </div>
-                                    <!-- image input-->
+                                <!-- image input-->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
@@ -53,7 +70,7 @@
                                     <div class="text-danger d-block px-2">{{$message}}</div>
                                     @enderror
                                 </div>
-                                    <!-- duration input-->
+                                <!-- duration input-->
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
@@ -74,25 +91,25 @@
                                     <div class="text-danger d-block px-2">{{$message}}</div>
                                     @enderror
                                 </div>
-                                    <!-- category input-->
-                                    <div class="form-group">
-                                        <div class="input-group">
-                                            <div class="input-group-addon">
-                                                <i class="fa fa-list-alt"></i>
-                                            </div>
-
-                                            <select name="category_id" id="">
-                                                <option selected>Select Exam Category</option>
-                                              @foreach($categories as $category)
-                                                    <option value="{{$category->id}}">{{$category->name}}</option>
-                                                @endforeach
-                                            </select>
-
+                                <!-- category input-->
+                                <div class="form-group">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-list-alt"></i>
                                         </div>
-                                        @error('category_id')
-                                        <div class="text-danger d-block px-2">{{$message}}</div>
-                                        @enderror
+
+                                        <select name="category_id" id="">
+                                            <option selected>Select Exam Category</option>
+                                            @foreach($categories as $category)
+                                                <option value="{{$category->id}}">{{$category->name}}</option>
+                                            @endforeach
+                                        </select>
+
                                     </div>
+                                    @error('category_id')
+                                    <div class="text-danger d-block px-2">{{$message}}</div>
+                                    @enderror
+                                </div>
 
 
                                 <div class="form-actions form-group">

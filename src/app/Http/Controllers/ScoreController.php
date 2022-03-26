@@ -7,6 +7,7 @@ use App\Models\Question;
 use App\Models\Score;
 use App\Http\Requests\StoreScoreRequest;
 use App\Http\Requests\UpdateScoreRequest;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 
 class ScoreController extends Controller
@@ -20,7 +21,7 @@ class ScoreController extends Controller
     {
         return view('admin.score.index', [
 
-            'scores'              =>  Score::all(),
+            'scores'              =>  Score::paginate(10),
             'auth_user'            =>  Auth::user(),
         ]);
 
@@ -133,6 +134,28 @@ class ScoreController extends Controller
             'scores'=>Score::where('user_id',Auth::user()->id)->orderByDesc('id')->get(),
         ]);
     }
+    public function examsTaken(){
+       $exam_ids= Score::all('exam_id')->groupBy('exam_id');
+       $exams= Exam::all(['name','id']);
+       foreach ($exams as $exam){
+           if(isset($exam_ids[$exam['id']])){
+               $exam['count']=count($exam_ids[$exam['id']]);
+           }
+           else{
+               $exam['count']=0;
+
+           }
+       }
+       return $exams;
+
+
+//       return $exam_ids;
+//       return Exam::all()->whereIn('id',$exam_ids)->toJson();
+
+    }
+
+
+
 
 
 }

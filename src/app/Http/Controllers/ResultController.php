@@ -9,6 +9,7 @@ use App\Http\Requests\StoreResultRequest;
 use App\Http\Requests\UpdateResultRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use function PHPUnit\Framework\isEmpty;
 
 class ResultController extends Controller
 {
@@ -17,13 +18,31 @@ class ResultController extends Controller
      *
      *e
      */
-    public function index()
+    public function index(Request $request)
     {
+        $search_query=$request->search;
+        $filter_search=$request->type;
+        $results=collect([]);
+        $searchError='';
+
+
+        if($search_query){
+            $results=Result::search($search_query,$filter_search);
+            if($results->count()==0){
+                $searchError="There is no results for your search";
+            }
+
+        }
+        ;
+
+        $results=$results->count()==0?Result::paginate(10):$results->paginate(10);
+
 
         return view('admin.results.index', [
 
-            'results'              =>  Result::all(),
+            'results'              =>  $results,
             'auth_user'            =>  Auth::user(),
+            'error'                =>$searchError,
         ]);
     }
 

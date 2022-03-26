@@ -24,14 +24,19 @@
     <!-- Vendor CSS-->
     <link href="{{asset('admin_styles/vendor/animsition/animsition.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_styles/vendor/bootstrap-progressbar/bootstrap-progressbar-3.3.4.min.css')}}" rel="stylesheet" media="all">
-    <link href="{{asset('admin_styles/vendor/wow/animate.css')}}" rel="stylesheet" media="all">
+{{--    <link href="{{asset('admin_styles/vendor/wow/animate.css')}}" rel="stylesheet" media="all">--}}
     <link href="{{asset('admin_styles/vendor/css-hamburgers/hamburgers.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_styles/vendor/slick/slick.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_styles/vendor/select2/select2.min.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_styles/vendor/perfect-scrollbar/perfect-scrollbar.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_styles/vendor/SnackBar-master/dist/snackbar.min.css')}}" rel="stylesheet" media="all">
+
 
     <!-- Main CSS-->
     <link href="{{asset('admin_styles/css/theme.css')}}" rel="stylesheet" media="all">
     <link href="{{asset('admin_styles/css/custom.css')}}" rel="stylesheet" media="all">
+    <link href="{{asset('admin_styles/css/animation.css')}}" rel="stylesheet" media="all">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 </head>

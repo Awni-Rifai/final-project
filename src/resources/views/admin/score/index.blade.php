@@ -35,6 +35,11 @@
                             @endforeach
                             </tbody>
                         </table>
+                        {{-- Pagination --}}
+                        <div class="d-flex mt-5 justify-content-center">
+                            {!! $scores->links() !!}
+                        </div>
+                        <h1></h1>
                     </div>
                     <!-- END DATA TABLE-->
                 </div>

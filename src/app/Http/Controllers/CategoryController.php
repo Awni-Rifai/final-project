@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Http\Requests\StoreCategoryRequest;
 use App\Http\Requests\UpdateCategoryRequest;
+use App\Models\Exam;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -135,12 +136,26 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
+        $exams=Exam::where('category_id','=',$id)->first();
+        if($exams){
+            return redirect()->route('admin.categories.index',['error'=>'have-movies','id'=>$id]);
+        }
         $category = Category::find($id);
 
         //check if the category is already deleted
         if($category)$category -> delete();
 
         return redirect()->route('admin.categories.index');
+    }
+    function destroyCascade(Request $request)
+    {
+        //returns number of records deleted
+
+        $exams=Exam::where('category_id','=',$request->id)->delete();
+        $category=Category::find($request->id)->delete();
+        return redirect()->route('admin.categories.index',['deleted'=>'true']);
+
+
     }
 
 

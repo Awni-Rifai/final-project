@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="copyright">
-            <p>Copyright © 2018 Colorlib. All rights reserved. Template by <a href="https://colorlib.com">Colorlib</a>.</p>
+            <p>Copyright ©2022 Quizlet</p>
         </div>
     </div>
 </div>
@@ -20,7 +20,8 @@
 <!-- Vendor JS       -->
 <script src="{{asset('admin_styles/vendor/slick/slick.min.js')}}"></script>
 <script src="{{asset('admin_styles/vendor/wow/wow.min.js')}}"></script>
-<script src="{{asset('admin_styles/vendor/animsition/animsition.min.js')}}"></script>
+<script src="{{asset('admin_styles/vendor/SnackBar-master/dist/snackbar.min.js')}}"></script>
+{{--<script src="{{asset('admin_styles/vendor/animsition/animsition.min.js')}}"></script>--}}
 <script src="{{asset('admin_styles/vendor/bootstrap-progressbar/bootstrap-progressbar.min.js')}}"></script>
 <script src="{{asset('admin_styles/vendor/counter-up/jquery.waypoints.min.js')}}"></script>
 <script src="{{asset('admin_styles/vendor/counter-up/jquery.counterup.min.js')}}"></script>
@@ -33,6 +34,8 @@
 <script src="{{asset('admin_styles/js/main.js')}}"></script>
 <script src="{{asset('admin_styles/js/script.js')}}"></script>
 <script src="{{asset('admin_styles/js/validation.js')}}"></script>
+<script src="{{asset('admin_styles/js/utility.js')}}"></script>
+
 </body>
 
 </html>
