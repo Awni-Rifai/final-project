@@ -29,9 +29,11 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-list-alt"></i>
+                                            <label  for="a">a</label>
+
                                         </div>
-                                        <input type="text" id="add_category" name="a" placeholder="answer_a" class="form-control">
+
+                                        <input type="text" id="a" name="a" placeholder="answer_a" class="form-control">
 
                                     </div>
 
@@ -43,9 +45,11 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-list-alt"></i>
+                                            <label  for="b">b</label>
+
                                         </div>
-                                        <input type="text" id="add_category" name="b" placeholder="answer_b" class="form-control">
+
+                                        <input type="text" id="b" name="b" placeholder="answer_b" class="form-control">
 
                                     </div>
 
@@ -57,9 +61,11 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-list-alt"></i>
+                                            <label  for="c">c</label>
+
                                         </div>
-                                        <input type="text" id="add_category" name="c" placeholder="answer_c" class="form-control">
+
+                                        <input type="text" id="c" name="c" placeholder="answer_c" class="form-control">
 
                                     </div>
 
@@ -71,9 +77,11 @@
                                 <div class="form-group">
                                     <div class="input-group">
                                         <div class="input-group-addon">
-                                            <i class="fa fa-list-alt"></i>
+                                            <label  for="d">d</label>
+
                                         </div>
-                                        <input type="text" id="add_category" name="d" placeholder="answer_d" class="form-control">
+
+                                        <input type="text" id="d" name="d" placeholder="answer_d" class="form-control">
 
                                     </div>
 
@@ -153,10 +161,10 @@
                                     <th>Created at</th>
                                     <th>exam</th>
                                     <th>title</th>
-                                    <th>answer_a</th>
-                                    <th>answer_b</th>
-                                    <th>answer_c</th>
-                                    <th>answer_d</th>
+{{--                                    <th>answer_a</th>--}}
+{{--                                    <th>answer_b</th>--}}
+{{--                                    <th>answer_c</th>--}}
+{{--                                    <th>answer_d</th>--}}
                                     <th>correct_answer</th>
                                     <th>points</th>
                                     <th>edit/delete</th>
@@ -169,10 +177,10 @@
                                         <td>{{$question->created_at}}</td>
                                         <td>{{$question->exam->name}}</td>
                                         <td>{{substr($question->title,0,10)}}..</td>
-                                        <td>{{substr($question->a,0,5)}}..</td>
-                                        <td>{{substr($question->b,0,5)}}..</td>
-                                        <td>{{substr($question->c,0,5)}}..</td>
-                                        <td>{{substr($question->d,0,5)}}..</td>
+{{--                                        <td>{{substr($question->a,0,5)}}..</td>--}}
+{{--                                        <td>{{substr($question->b,0,5)}}..</td>--}}
+{{--                                        <td>{{substr($question->c,0,5)}}..</td>--}}
+{{--                                        <td>{{substr($question->d,0,5)}}..</td>--}}
                                         <td>{{$question->answer}}</td>
                                         <td>{{$question->points}}</td>
 
@@ -191,6 +199,7 @@
                                                         <i class="zmdi zmdi-delete"></i>
                                                     </button>
                                                 </form>
+                                                <a href="{{route('admin.questions.show',$question->id)}}" class=" mx-2 btn btn-outline-secondary btn-sm">show</a>
 
                                             </div>
                                         </td>
@@ -200,6 +209,9 @@
                                 @endforeach
                                 </tbody>
                             </table>
+                            <div class="d-flex mt-5 justify-content-center">
+                                {!! $questions->links() !!}
+                            </div>
                         </div>
                         <!-- END DATA TABLE-->
                     </div>

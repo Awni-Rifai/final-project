@@ -8,7 +8,9 @@
     <meta name="description" content="au theme template">
     <meta name="author" content="Hau Nguyen">
     <meta name="keywords" content="au theme template">
-
+    <!-- Favicons -->
+    <link href="{{asset('pages/assets/img/logoquiz.png')}}" rel="icon">
+    <link href="{{asset('pages/assets/img/apple-touch-icon.png')}}" rel='apple-touch-icon'>
     <!-- Title Page-->
     <title>Dashboard</title>
 

@@ -19,13 +19,13 @@ class ExamController extends Controller
     public function index(Request $request)
     {
 
-        $exams=Exam::paginate(10);
+
 
         return view('admin.exams.index', [
 
             'categories'     =>  Category::all(),
 
-            'exams'          =>  $exams,
+            'exams'          =>  Exam::orderByDesc('created_at')->paginate(5),
 
             'auth_user'      =>  Auth::user(),
         ]);

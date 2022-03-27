@@ -79,14 +79,13 @@
 
                                         <select name="duration" id="">
                                             <option selected>Select Exam Duration</option>
-                                            <option value="30">30 min</option>
-                                            <option value="45">45 min</option>
-                                            <option value="60">60 min</option>
-                                            <option value="90">90 min</option>
-                                            <option value="120">120 min</option>
+                                            <option value="30">5 min</option>
+
                                         </select>
 
+
                                     </div>
+                                    <span class="text-secondary">currently we have only one exam duration</span>
                                     @error('duration')
                                     <div class="text-danger d-block px-2">{{$message}}</div>
                                     @enderror

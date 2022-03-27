@@ -26,27 +26,27 @@
                                     @csrf
                                     <div class="form-group mb-3">
 
-                                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="ground1" placeholder="Full Name">
+                                        <input name="name" type="text" class="form-control @error('name') is-invalid @enderror" id="name" placeholder="Full Name">
                                         @error('name')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="name-error invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                     <div class="form-group mb-3">
 
-                                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="ground2" placeholder="Enter Your Email" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                        <input type="text" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Enter Your Email" name="email" value="{{ old('email') }}" required autocomplete="email">
                                         @error('email')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="email-error invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
                                     </div>
                                     <div class="form-group mb-3">
 
-                                        <input type="password" class="form-control  @error('password') is-invalid @enderror" id="ground3" placeholder="Password" name="password" required autocomplete="new-password">
+                                        <input type="password" class="form-control  @error('password') is-invalid @enderror" id="password" placeholder="Password" name="password" required autocomplete="new-password">
                                         @error('password')
-                                        <span class="invalid-feedback" role="alert">
+                                        <span class="password-error invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                         @enderror
@@ -54,7 +54,8 @@
                                     </div>
 
                                     <div class="form-group mb-3">
-                                        <input id="ground3" placeholder="confirm password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <input id="password_confirmation" placeholder="confirm password" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
+                                        <span class="confirm-password text-danger"></span>
                                     </div>
 
                                     <div class="form-group">

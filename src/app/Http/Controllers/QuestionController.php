@@ -19,7 +19,7 @@ class QuestionController extends Controller
 
             'exams'              =>  Exam::all(),
 
-            'questions'          =>  Question::all(),
+            'questions'          =>  Question::orderByDesc('created_at')->paginate(5),
 
             'auth_user'          =>  Auth::user(),
         ]);
@@ -87,9 +87,11 @@ class QuestionController extends Controller
      *
 
      */
-    public function show(Category $category)
+    public function show($id)
     {
-        //
+        return view('admin.questions.show',[
+           'question'=>Question::findOrFail($id),
+        ]);
     }
 
     /**

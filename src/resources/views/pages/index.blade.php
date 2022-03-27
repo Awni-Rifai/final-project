@@ -41,6 +41,7 @@
                           <p>
                               Conditional logic lets you ask the right follow-up questions and skip the rest. Surveys feel less like interrogations, and more like conversations.
                           </p>
+                          <a href="{{route('register')}}">Register to start</a>
 
                       </div>
                   </div>

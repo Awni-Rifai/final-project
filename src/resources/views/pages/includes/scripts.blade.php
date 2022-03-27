@@ -11,6 +11,7 @@
 <!-- Template Main JS File -->
 <script src="{{asset('pages/assets/js/main.js')}}"></script>
 <script src="{{asset('pages/assets/js/Quiz.js')}}"></script>
+<script src="{{asset('pages/assets/js/register.js')}}"></script>
 
 </body>
 
